@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+.main{
+  margin-top: 50px;
+}
+
 .main-header{
+  margin-top: 50px;
   font-family: 'Montserrat', sans-serif;
   justify-content: center;
   align-items: center;

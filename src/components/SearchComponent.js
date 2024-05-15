@@ -11,9 +11,11 @@ export default function SearchComponent() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [errors, setErrors] = useState({});
   const [searchResult, setSearchResult] = useState(null);
+  const cities_url = process.env.REACT_APP_API_URL + "cities/";
+  const search_url = process.env.REACT_APP_API_URL + "search?";
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/cities/")
+    fetch(cities_url)
       .then((response) => response.json())
       .then((data) => {
         setCities(data);
@@ -57,7 +59,7 @@ export default function SearchComponent() {
       end_date: endDate,
     });
 
-    fetch(`http://127.0.0.1:8000/search?${params.toString()}`)
+    fetch(`${search_url}${params.toString()}`)
       .then((response) => response.json())
       .then((data) => {
         setSearchResult(data);

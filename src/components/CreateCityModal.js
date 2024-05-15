@@ -66,7 +66,9 @@ export default function CreateCityModal({ isOpen, onClose, onCityCreated }) {
       country,
     };
 
-    fetch("http://127.0.0.1:8000/cities/", {
+    const url = process.env.REACT_APP_API_URL + "cities/";
+
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
