@@ -7,19 +7,15 @@ This is the Frontend portion of the Find Nearest Earthquake project made with Re
 
 ```
 1. Clone the project
+$ git clone <repo_url>
 2. Enter on the project folder
+$ cd earthquake-web
 3. Create your .env file
+$ cp contrib/.env-sample .env
 4. Instal the dependencies
+$ npm install
 5. Run the project
-```
-
-On the terminal:
-```
-git clone <repo_url>
-cd earthquake-web
-cp contrib/.env-sample .env
-npm install
-npm start
+$ npm start
 ```
 
 The project will be available at [http://localhost:3000/](http://localhost:3000/)
