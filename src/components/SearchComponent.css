@@ -40,3 +40,9 @@
     margin-top: 5px;
   }
   
+.loading {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  color: #555;
+}

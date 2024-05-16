@@ -11,6 +11,7 @@ export default function SearchComponent() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [errors, setErrors] = useState({});
   const [searchResult, setSearchResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const cities_url = process.env.REACT_APP_API_URL + "cities/";
   const search_url = process.env.REACT_APP_API_URL + "search?";
 
@@ -23,7 +24,7 @@ export default function SearchComponent() {
       .catch((error) => {
         console.error("Error fetching cities:", error);
       });
-  }, []);
+  }, [cities_url]);
 
   const validateFields = () => {
     const newErrors = {};
@@ -31,10 +32,10 @@ export default function SearchComponent() {
     if (!cityId) newErrors.city = "City is required.";
     if (!startDate) {
       newErrors.startDate = "Start date is required.";
-    } 
+    }
     if (!endDate) {
       newErrors.endDate = "End date is required.";
-    } 
+    }
     if (startDate && endDate && startDate >= endDate) {
       newErrors.endDate = "End date must be later than the start date.";
     }
@@ -52,6 +53,8 @@ export default function SearchComponent() {
     }
 
     setErrors({});
+    setSearchResult(null);
+    setIsLoading(true);
 
     const params = new URLSearchParams({
       city: cityId,
@@ -63,9 +66,11 @@ export default function SearchComponent() {
       .then((response) => response.json())
       .then((data) => {
         setSearchResult(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error:", error);
+        setIsLoading(false);
       });
   };
 
@@ -151,7 +156,8 @@ export default function SearchComponent() {
           onCityCreated={handleCityCreated}
         />
       </div>
-      {searchResult && (
+      {isLoading && <div className="loading">Loading...</div>}
+      {searchResult && !isLoading && (
         <SearchResult
           city={cities.find((c) => String(c.id) === cityId)}
           result={searchResult}
