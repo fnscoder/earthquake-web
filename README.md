@@ -1,6 +1,10 @@
 # Earthquake WEB
 
-This is the Frontend portion of the Find Nearest Earthquake project made with Reactjs
+This is the Frontend portion of the Find Nearest Earthquake project made with Reactjs.
+
+Backend project [here](https://github.com/fnscoder/earthquake-api/)
+
+Challenge description [here](https://github.com/fnscoder/earthquake-api/blob/main/find_nearest_earthquake.md)
 
 
 ## How to run the project
